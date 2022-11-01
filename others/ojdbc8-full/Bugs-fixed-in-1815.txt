@@ -1,8 +1,0 @@
-
-Known Problems Fixed in This Patch Release (on top of 18.14)
----------------------------------------------------------------
-
-18.15 is the July Critical Patch Update (CPU) which contains NNE fix for the vulnerability CVE-2021-2351. 
-Refer MOS note 2791571.1 for more details. 
-
-BUG-32720458 - SECURITY BUG

@@ -4,10 +4,10 @@ import java.util.ArrayList; //public class ArrayList<E> extends AbstractList<E>
 import java.sql.*;
 
 public class MemberDAO {
-	String driver = "oracle.jdbc.driver.OracleDriver"; // 6행 ~ 9행 데이터베이스 접속을 위한 4가지 정보를 String 변수에 저장.
-	String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	String userid = "CEZNO";
-	String passwd = "zpwmsh";
+		String driver = "oracle.jdbc.driver.OracleDriver"; // 6행 ~ 9행 데이터베이스 접속을 위한 4가지 정보를 String 변수에 저장.
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String userid = "CEZNO";
+		String passwd = "zpwmsh";
 
 	public MemberDAO() {
 		try {
