@@ -1,4 +1,4 @@
-package test;
+package board;
 
 
 import java.util.Date;
@@ -9,6 +9,7 @@ public class PostDTO {
 	private String pst_text;
 	private Date pst_date;
 	private String id;
+	private long hit;
 
 	public PostDTO() {
 
@@ -54,10 +55,19 @@ public class PostDTO {
 		this.id = id;
 	}
 
+	public long getHit() {
+		return hit;
+	}
+
+	public void setHit(long hit) {
+		this.hit = hit;
+	}
+
 	@Override
 	public String toString() {
 		return "PostDTO [pst_no=" + pst_no + ", pst_title=" + pst_title + ", pst_text=" + pst_text + ", pst_date="
-				+ pst_date + ", id=" + id + "]";
+				+ pst_date + ", id=" + id + ", hit=" + hit + "]";
 	}
+
 
 }

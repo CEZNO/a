@@ -14,7 +14,8 @@ CREATE TABLE post (
   id        VARCHAR2(12) NOT NULL,
   pst_title VARCHAR2(100) NOT NULL,
   pst_text  LONG NULL,
-  pst_date  DATE NULL
+  pst_date  DATE NULL,
+  hit       INT  NULL
 );
 
 CREATE TABLE comm (

@@ -1,4 +1,4 @@
-package test;
+package board;
 
 import java.util.Date;
 import java.util.List;
