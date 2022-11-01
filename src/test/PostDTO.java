@@ -4,7 +4,7 @@ package test;
 import java.util.Date;
 
 public class PostDTO {
-	private int pst_no;
+	private long pst_no;
 	private String pst_title;
 	private String pst_text;
 	private Date pst_date;
@@ -14,28 +14,11 @@ public class PostDTO {
 
 	}
 
-	public PostDTO(int pst_no, String pst_title, String pst_text, Date pst_date, String id) {
-		super();
-		this.pst_no = pst_no;
-		this.pst_title = pst_title;
-		this.pst_text = pst_text;
-		this.pst_date = pst_date;
-		this.id = id;
-	}
-
-	public PostDTO(int pst_no, String pst_title, Date pst_date, String id) {
-		super();
-		this.pst_no = pst_no;
-		this.pst_title = pst_title;
-		this.pst_date = pst_date;
-		this.id = id;
-	}
-
-	public int getPst_no() {
+	public long getPst_no() {
 		return pst_no;
 	}
 
-	public void setPst_no(int pst_no) {
+	public void setPst_no(long pst_no) {
 		this.pst_no = pst_no;
 	}
 

@@ -3,13 +3,13 @@ package test;
 import java.util.ArrayList; //public class ArrayList<E> extends AbstractList<E>
 import java.sql.*;
 
-public class MemberDAO {
+public class PostDAO {
 		String driver = "oracle.jdbc.driver.OracleDriver"; // 6행 ~ 9행 데이터베이스 접속을 위한 4가지 정보를 String 변수에 저장.
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String userid = "CEZNO";
 		String passwd = "zpwmsh";
 
-	public MemberDAO() {
+	public PostDAO() {
 		try {
 			Class.forName(driver); // 드라이버를 로딩하는 초기화 작업을 생성자에서 구현한다.
 		} catch (ClassNotFoundException e) {
@@ -17,8 +17,8 @@ public class MemberDAO {
 		}
 	}
 
-	public ArrayList<MemberDTO> select() {
-		ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
+	public ArrayList<PostDTO> select() {
+		ArrayList<PostDTO> list = new ArrayList<PostDTO>();
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -29,7 +29,7 @@ public class MemberDAO {
 			// DriverManager 클래스의 getConnection() 메소드를
 			// 이용해서 Connection 객체를 얻는다.
 
-			String query = "SELECT id, pw, name, adress, signup_ip, signup_date FROM mem";
+			String query = "SELECT pst_no, pst_title, pst_text, pst_date, id FROM post";
 			// 요청할 SQL 문을 String 변수에 저장한다.
 
 			pstmt = con.prepareStatement(query);
@@ -41,15 +41,14 @@ public class MemberDAO {
 			// 결과는 ResultSet 객체로 받는다.
 
 			while (rs.next()) {
-				MemberDTO dto = new MemberDTO();
+				PostDTO dto = new PostDTO();
 				// 각각의 레코드 정보를 MemberDTO 클래스의 객체에 저장한다.
 
+				dto.setPst_no(rs.getLong("pst_no"));
+				dto.setPst_title(rs.getString("pst_title"));
+				dto.setPst_text(rs.getString("pst_text"));
+				dto.setPst_date(rs.getDate("pst_date"));
 				dto.setId(rs.getString("id"));
-				dto.setPw(rs.getString("pw"));
-				dto.setName(rs.getString("name"));
-				dto.setAdress(rs.getString("adress"));
-				dto.setSignup_ip(rs.getLong("signup_ip"));
-				dto.setSignup_date(rs.getDate("signup_date"));
 				list.add(dto); // 저장된 MemberDTO 클래스의 객체를 누적시키기 위해서
 				// ArrayList 객체 저장한다. while 문이 모두 실행된 후에는 mem 테이블의 모든 레코드가
 				// ArrayList 의 객체에 모두 저장된다.

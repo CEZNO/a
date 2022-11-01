@@ -4,44 +4,23 @@ package test;
 import java.util.Date;
 
 public class CommDTO {
-	private int cmt_no;
+	private long cmt_no;
 	private int cmt_chckopen;
 	private int cmt_blame;
 	private Date cmt_date;
 	private String cmt_txt;
-	private int pst_no;
+	private long pst_no;
 	private String id;
 
 	public CommDTO() {
 
 	}
-
-	public CommDTO(int cmt_no, int cmt_chckopen, int cmt_blame, Date cmt_date, String cmt_txt, int pst_no, String id) {
-		super();
-		this.cmt_no = cmt_no;
-		this.cmt_chckopen = cmt_chckopen;
-		this.cmt_blame = cmt_blame;
-		this.cmt_date = cmt_date;
-		this.cmt_txt = cmt_txt;
-		this.pst_no = pst_no;
-		this.id = id;
-	}
-
-	public CommDTO(int cmt_no, int cmt_chckopen, int cmt_blame, Date cmt_date, int pst_no, String id) {
-		super();
-		this.cmt_no = cmt_no;
-		this.cmt_chckopen = cmt_chckopen;
-		this.cmt_blame = cmt_blame;
-		this.cmt_date = cmt_date;
-		this.pst_no = pst_no;
-		this.id = id;
-	}
-
-	public int getCmt_no() {
+	
+	public long getCmt_no() {
 		return cmt_no;
 	}
 
-	public void setCmt_no(int cmt_no) {
+	public void setCmt_no(long cmt_no) {
 		this.cmt_no = cmt_no;
 	}
 
@@ -77,11 +56,11 @@ public class CommDTO {
 		this.cmt_txt = cmt_txt;
 	}
 
-	public int getPst_no() {
+	public long getPst_no() {
 		return pst_no;
 	}
 
-	public void setPst_no(int pst_no) {
+	public void setPst_no(long pst_no) {
 		this.pst_no = pst_no;
 	}
 

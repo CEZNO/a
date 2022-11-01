@@ -5,52 +5,52 @@ import java.util.List;
 import java.util.ArrayList; //public class ArrayList<E> extends AbstractList<E>
 
 public class MemberDTO {
-	private String id;
-	private String pw;
-	private String name;
-	private String adress;
-	private int signup_ip;
-	private Date signup_date;
+	String id;
+	String pw;
+	String name;
+	String adress;
+	long signup_ip;
+	Date signup_date;
 
 	public MemberDTO() {
 
 	}
 
-	public MemberDTO(String id, String pw, String name, String adress, int signup_ip, Date signup_date) {
-		super();
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.adress = adress;
-		this.signup_ip = signup_ip;
-		this.signup_date = signup_date;
-	}
-
-	public MemberDTO(String id, String pw, String name, int signup_ip, Date signup_date) {
-		super();
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.signup_ip = signup_ip;
-		this.signup_date = signup_date;
-	}
-
-	public MemberDTO(String id, String pw, String name, Date signup_date) {
-		super();
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.signup_date = signup_date;
-	}
-
-	public MemberDTO(String id, String pw, String name, String adress, Date signup_date) {
-		super();
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.adress = adress;
-		this.signup_date = signup_date;
-	}
+//	public MemberDTO(String id, String pw, String name, String adress, int signup_ip, Date signup_date) {
+//		super();
+//		this.id = id;
+//		this.pw = pw;
+//		this.name = name;
+//		this.adress = adress;
+//		this.signup_ip = signup_ip;
+//		this.signup_date = signup_date;
+//	}
+//
+//	public MemberDTO(String id, String pw, String name, int signup_ip, Date signup_date) {
+//		super();
+//		this.id = id;
+//		this.pw = pw;
+//		this.name = name;
+//		this.signup_ip = signup_ip;
+//		this.signup_date = signup_date;
+//	}
+//
+//	public MemberDTO(String id, String pw, String name, Date signup_date) {
+//		super();
+//		this.id = id;
+//		this.pw = pw;
+//		this.name = name;
+//		this.signup_date = signup_date;
+//	}
+//
+//	public MemberDTO(String id, String pw, String name, String adress, Date signup_date) {
+//		super();
+//		this.id = id;
+//		this.pw = pw;
+//		this.name = name;
+//		this.adress = adress;
+//		this.signup_date = signup_date;
+//	}
 
 	public String getId() {
 		return id;
@@ -84,11 +84,11 @@ public class MemberDTO {
 		this.adress = adress;
 	}
 
-	public int getSignup_ip() {
+	public long getSignup_ip() {
 		return signup_ip;
 	}
 
-	public void setSignup_ip(int signup_ip) {
+	public void setSignup_ip(long signup_ip) {
 		this.signup_ip = signup_ip;
 	}
 
