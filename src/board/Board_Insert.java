@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.*;
+import jframebd.PostDTO;
 
 @WebServlet("/Board_Insert")
 public class Board_Insert extends HttpServlet {
@@ -37,36 +38,36 @@ public class Board_Insert extends HttpServlet {
 		out.println("<h2>글쓰기</h2>");
 		out.println("<div class=row>");
 
-		out.println("<form method=post action=BoardInsert>");
+		out.println("<form method=post action=Board_Insert>");
 		// post 보안 / get 다보여짐
 		out.println("<table class=\"table\">");
 		out.println("<tr>");
 		out.println("<td width=15% class-right>이름</td>");
 		out.println("<td width=85%>");
-		out.println("<input type=text size=15 class=input-sm name=name>");
+		out.println("<input type=text size=15 class=input-sm name=id>");
 		out.println("</td>");
 		out.println("</tr>");
 
 		out.println("<tr>");
 		out.println("<td width=15% class-right>제목</td>");
 		out.println("<td width=85%>");
-		out.println("<input type=text size=45 class=input-sm name=subject>");
+		out.println("<input type=text size=45 class=input-sm name=pst_title>");
 		out.println("</td>");
 		out.println("</tr>");
 
 		out.println("<tr>");
 		out.println("<td width=15% class=text-right>내용</td>");
 		out.println("<td width=85%>");
-		out.println("<textarea cols=50 rows=10 name=content></textarea>");
+		out.println("<textarea cols=50 rows=10 name=pst_text></textarea>");
 		out.println("</td>");
 		out.println("</tr>");
 
-		out.println("<tr>");
-		out.println("<td width=15% class=text-right>비밀번호</td>");
-		out.println("<td width=85%>");
-		out.println("<input type=password size=10 class=input-sm name=pwd>");
-		out.println("</td>");
-		out.println("</tr>");
+//		out.println("<tr>");
+//		out.println("<td width=15% class=text-right>비밀번호</td>");
+//		out.println("<td width=85%>");
+//		out.println("<input type=password size=10 class=input-sm name=pwd>");
+//		out.println("</td>");
+//		out.println("</tr>");
 
 		out.println("<tr>");
 		out.println("<td colspan=2 class=text-center>");

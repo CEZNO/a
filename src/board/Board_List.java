@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.*;//ArrayList
 
 import board.*;
+import jframebd.PostDTO;
 
 @WebServlet("/Board_List")
 public class Board_List extends HttpServlet {
@@ -38,7 +39,7 @@ public class Board_List extends HttpServlet {
 		out.println("<table class=\"table\">");
 		out.println("<tr>");
 		out.println("<td>");
-		out.println("<a href=BoardInsert class=\"btn btn-sm btn-success\">새글</a>");
+		out.println("<a href=Board_Insert class=\"btn btn-sm btn-success\">새글</a>");
 		// btn-sm 크기 / btn-lg : 버튼 커짐 / btn-xs : 버튼 작아짐
 		// success - 녹색
 		out.println("</td>");
@@ -59,7 +60,7 @@ public class Board_List extends HttpServlet {
 		for (PostDTO dto : list) {
 			out.println("<tr>");
 			out.println("<th class=text-center width=10%>" + dto.getPst_no() + "</th>");
-			out.println("<th class=text-left width=45%>" + "<a href=BoardDetail?no=" + dto.getPst_no() + ">"
+			out.println("<th class=text-left width=45%>" + "<a href=Board_Detail?no=" + dto.getPst_no() + ">"
 					+ dto.getPst_title() + "</a></td>");
 			out.println("<th class=text-center width=15%>" + dto.getId() + "</th>");
 			out.println("<th class=text-center width=20%>" + dto.getPst_date().toString() + "</th>");
@@ -85,9 +86,9 @@ public class Board_List extends HttpServlet {
 
 		out.println("<td class=text-right>");
 		// primary -진한 청색
-		out.println("<a href=BoardInsert class=\"btn btn-sm btn-primary\">이전</a>");
+		out.println("<a href=Board_Insert class=\"btn btn-sm btn-primary\">이전</a>");
 		out.println("0 page / 0 pages");
-		out.println("<a href=BoardInsert class=\"btn btn-sm btn-primary\">다음</a>");
+		out.println("<a href=Board_Insert class=\"btn btn-sm btn-primary\">다음</a>");
 		out.println("</td>");
 
 		out.println("</tr>");

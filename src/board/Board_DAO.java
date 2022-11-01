@@ -1,7 +1,10 @@
 package board;
 
 import java.util.*;
-import javax.xml.transform.Result;
+import java.xml.*;
+
+import jframebd.PostDTO;
+
 import java.sql.*;
 
 public class Board_DAO {

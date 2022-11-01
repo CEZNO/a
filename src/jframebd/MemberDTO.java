@@ -1,17 +1,17 @@
-package board;
+package jframebd;
 
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList; //public class ArrayList<E> extends AbstractList<E>
 
 public class MemberDTO {
-	String id;
-	String pw;
-	String name;
-	String adress;
-	long signup_ip;
-	Date signup_date;
-
+	private String id;
+	private String pw;
+	private String name;
+	private String adress;
+	private long signup_ip;
+	private Date signup_date;
+	
 	public MemberDTO() {
 
 	}

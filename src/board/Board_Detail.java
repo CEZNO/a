@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.*;
+import jframebd.PostDTO;
 
 @WebServlet("/Board_Detail")
 public class Board_Detail extends HttpServlet {
@@ -69,7 +70,7 @@ public class Board_Detail extends HttpServlet {
 		out.println("<td colspan=4 class=text-right>");
 		out.println("<a href=# class=\"btn btn-xs btn-success\">수정</a>");
 		out.println("<a href=# class=\"btn btn-xs btn-success\">삭제</a>");
-		out.println("<a href=BoardList class=\"btn btn-xs btn-success\">목록</a>");
+		out.println("<a href=Board_List class=\"btn btn-xs btn-success\">목록</a>");
 		out.println("</td>");
 		out.println("</tr>");
 

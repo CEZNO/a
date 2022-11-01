@@ -1,4 +1,4 @@
-package board;
+package jframebd;
 
 
 import java.util.Date;

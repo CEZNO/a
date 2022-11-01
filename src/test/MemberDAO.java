@@ -2,24 +2,36 @@ package test;
 
 import java.util.ArrayList; //public class ArrayList<E> extends AbstractList<E>
 
-import board.MemberDTO;
+import jframebd.MemberDTO;
 
 import java.sql.*;
 
 public class MemberDAO {
-		String driver = "oracle.jdbc.driver.OracleDriver"; // 6행 ~ 9행 데이터베이스 접속을 위한 4가지 정보를 String 변수에 저장.
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String userid = "CEZNO";
-		String passwd = "zpwmsh";
+		private static final String driver = "oracle.jdbc.driver.OracleDriver"; // 6행 ~ 9행 데이터베이스 접속을 위한 4가지 정보를 String 변수에 저장.
+		private static final String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		
+		private static final String userid = "CEZNO";
+		private static final String passwd = "zpwmsh";
+		
+		Connection con;
+		Statement st;
+		PreparedStatement ps;
+		ResultSet rs;
 
 	public MemberDAO() {
-		try {
-			Class.forName(driver); // 드라이버를 로딩하는 초기화 작업을 생성자에서 구현한다.
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		
 	}
 
+	public MemberDAO(Member_List mList) {
+		this.mList = mList;
+		System.out.println("DAO=>" + mList);
+	}
+
+	try {
+		Class.forName(driver); // 드라이버를 로딩하는 초기화 작업을 생성자에서 구현한다.
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	}
 	public ArrayList<MemberDTO> select() {
 		ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
 
