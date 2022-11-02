@@ -4,8 +4,6 @@ package test;
 import java.util.ArrayList;
 import java.util.Date;
 
-import jframebd.MemberDTO;
-
 public class MemberDAO_Presentaition_Logic {
 	public static void main(String[] args) {
 

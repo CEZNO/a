@@ -1,15 +1,14 @@
-package jframebd;
+package test;
 
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList; //public class ArrayList<E> extends AbstractList<E>
 
 public class MemberDTO {
-	private String no;
 	private String id;
 	private String pw;
 	private String name;
-	private String address;
+	private String adress;
 	private long signup_ip;
 	private Date signup_date;
 	
@@ -53,18 +52,9 @@ public class MemberDTO {
 //		this.signup_date = signup_date;
 //	}
 
-	public String getNo() {
-		return no;
-	}
-	
-	public void setNo(String no) {
-		this.no = no;
-	}
-
 	public String getId() {
 		return id;
 	}
-
 
 	public void setId(String id) {
 		this.id = id;
@@ -86,12 +76,12 @@ public class MemberDTO {
 		this.name = name;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getAdress() {
+		return adress;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAdress(String adress) {
+		this.adress = adress;
 	}
 
 	public long getSignup_ip() {

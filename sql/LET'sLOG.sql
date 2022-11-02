@@ -1,41 +1,49 @@
+-- 각 테이블 생성
 CREATE TABLE mem (
-  id          VARCHAR2(12) NOT NULL PRIMARY KEY,
+  no          INT NOT NULL PRIMARY KEY,
+  id          VARCHAR2(12) NOT NULL UNIQUE,
   pw          VARCHAR2(16) NOT NULL
-    CONSTRAINT check_pw CHECK ( length(pw) > 6
+    CONSTRAINT check_pw CHECK ( length(pw) > 7
                                 AND length(pw) < 17 ),
   name        VARCHAR2(50) NOT NULL,
-  adress      VARCHAR2(50) NULL,
+  address     VARCHAR2(50) NULL,
   signup_ip   NUMBER(12) NULL,
   signup_date DATE NOT NULL
 );
 
 CREATE TABLE post (
+  no        INT NOT NULL,
   pst_no    INT NOT NULL PRIMARY KEY,
-  id        VARCHAR2(12) NOT NULL,
   pst_title VARCHAR2(100) NOT NULL,
-  pst_text  LONG NULL,
+  pst_txt   LONG NULL,
   pst_date  DATE NULL,
-  hit       INT  NULL
+  hit       INT NULL
 );
 
 CREATE TABLE comm (
+  no           INT NOT NULL,
   cmt_no       INT NOT NULL PRIMARY KEY,
   pst_no       INT NOT NULL,
-  id           VARCHAR2(12) NOT NULL,
-  cmt_chckopen NUMBER(1) NOT NULL,
-  cmt_blame    NUMBER(1) NOT NULL,
+  cmt_txt      VARCHAR2(900) NULL,
   cmt_date     DATE NOT NULL,
-  cmt_txt      VARCHAR2(900) NULL
+  cmt_chckopen NUMBER(1) NOT NULL,
+  cmt_blame    NUMBER(1) NOT NULL
 );
 
+-- 외래키 설정
 ALTER TABLE post
-  ADD CONSTRAINT pst_id FOREIGN KEY ( id )
-    REFERENCES mem ( id );
+  ADD CONSTRAINT pst_mem_no FOREIGN KEY ( no )
+    REFERENCES mem ( no );
 
 ALTER TABLE comm
   ADD CONSTRAINT cmt_pst_no FOREIGN KEY ( pst_no )
     REFERENCES post ( pst_no );
 
+ALTER TABLE comm
+  ADD CONSTRAINT cmt_mem_no FOREIGN KEY ( no )
+    REFERENCES mem ( no );
+
+-- 각 테이블 조회
 SELECT
   *
 FROM
@@ -51,38 +59,60 @@ SELECT
 FROM
   comm;
 
+-- 회원 정보 조회(이용자)
 SELECT
-comm.id,
-mem.pw,
+  no,
+  id,
+  pw,
+  name,
+  address,
+  signup_date
+FROM
+  mem;
+
+-- 작성 게시글 조회(이용자)
+SELECT
 mem.name,
-mem.adress,
-mem.signup_date,
-comm.pst_no,
+post.pst_no,
 post.pst_title,
+post.pst_txt,
 post.pst_date,
-comm.id,
+post.hit
+FROM mem LEFT OUTER JOIN post
+ON mem.no = post.no
+WHERE mem.name LIKE ?;
+
+-- 작성자 댓글 조회(이용자)
+SELECT
+mem.name,
+comm.pst_no,
 comm.cmt_no,
 comm.cmt_txt,
 comm.cmt_date
-FROM mem left outer join post
-on mem.id = post.id
-left outer join comm
-on mem.id = comm.id;
+FROM mem
+LEFT OUTER JOIN comm
+ON mem.no =
+comm.no
+WHERE mem.name LIKE ?;
 
+-- 각 테이블 삭제
 DROP TABLE mem;
 
 DROP TABLE post;
 
 DROP TABLE comm;
 
+-- 회원 정보 입력 예시
 INSERT INTO mem (
+  no,
   id,
   pw,
   name,
-  adress,
+  address,
   signup_ip,
   signup_date
 ) VALUES (
+  1,
   'cezno',
   'zpwmsh1234',
   'CEZNO',
@@ -92,13 +122,15 @@ INSERT INTO mem (
 );
 
 INSERT INTO mem (
+  no,
   id,
   pw,
   name,
-  adress,
+  address,
   signup_ip,
   signup_date
 ) VALUES (
+  2,
   'camael',
   'camael1234',
   'CAMAEL',
@@ -107,15 +139,16 @@ INSERT INTO mem (
   sysdate
 );
 
+-- 게시글 정보 입력 예시
 INSERT INTO post (
   pst_no,
-  id,
+  no,
   pst_title,
-  pst_text,
+  pst_txt,
   pst_date
 ) VALUES (
   1,
-  'cezno',
+  1,
   '이것은 test, This is 테스트',
   'String 클래스의 문자열 길이의 한계
   
@@ -130,28 +163,11 @@ String 클래스의 문자열 길이의 한계는 하드웨어 머신과 운영�
   sysdate
 );
 
+-- 댓글 정보 입력 예시
 INSERT INTO comm (
+  no,
   cmt_no,
   pst_no,
-  id,
-  cmt_chckopen,
-  cmt_blame,
-  cmt_date,
-  cmt_txt
-) VALUES (
-  1,
-  1,
-  'camael',
-  1,
-  0,
-  sysdate,
-  '니렙에잠이오냐?'
-);
-
-INSERT INTO comm (
-  cmt_no,
-  pst_no,
-  id,
   cmt_chckopen,
   cmt_blame,
   cmt_date,
@@ -159,7 +175,25 @@ INSERT INTO comm (
 ) VALUES (
   2,
   1,
-  'cezno',
+  1,
+  1,
+  0,
+  sysdate,
+  '니렙에잠이오냐?'
+);
+
+INSERT INTO comm (
+  no,
+  cmt_no,
+  pst_no,
+  cmt_chckopen,
+  cmt_blame,
+  cmt_date,
+  cmt_txt
+) VALUES (
+  1,
+  2,
+  1,
   1,
   0,
   sysdate,
@@ -167,22 +201,37 @@ INSERT INTO comm (
 );
 
 INSERT INTO comm (
+  no,
   cmt_no,
   pst_no,
-  id,
   cmt_chckopen,
   cmt_blame,
   cmt_date,
   cmt_txt
 ) VALUES (
+  1,
   3,
   1,
-  'cezno',
   1,
   0,
   sysdate,
   '한 번 더 개꿀띠'
 );
+
+시퀀스 확인.
+create sequence mem_seq;
+삭제
+drop sequence mem_seq;
+
+시퀀스 현재 값 조회. 
+select last_number from user_sequences where sequence_name = 'mem_seq';
+시퀀스 재설정.
+alter sequence mem_seq increment by -22 ;
+
+시퀀스 조회 
+select mem_seq.nextval from dual;
+시퀀스 증가치 변경 
+alter sequence mem_seq increment by 1;
 
 COMMIT;
 

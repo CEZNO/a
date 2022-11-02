@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.*;//ArrayList
 
 import board.*;
-import jframebd.PostDTO;
+import test.PostDTO;
 
 @WebServlet("/Board_List")
 public class Board_List extends HttpServlet {

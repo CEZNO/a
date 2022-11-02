@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.*;
-import jframebd.PostDTO;
+import test.PostDTO;
 
 @WebServlet("/Board_Detail")
 public class Board_Detail extends HttpServlet {

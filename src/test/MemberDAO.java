@@ -1,9 +1,6 @@
 package test;
 
 import java.util.ArrayList; //public class ArrayList<E> extends AbstractList<E>
-
-import jframebd.MemberDTO;
-
 import java.sql.*;
 
 public class MemberDAO {

@@ -3,7 +3,7 @@ package board;
 import java.util.*;
 import java.xml.*;
 
-import jframebd.PostDTO;
+import test.PostDTO;
 
 import java.sql.*;
 
