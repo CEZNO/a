@@ -9,16 +9,16 @@ import java.awt.Component;
 import java.awt.GridLayout;
 import javax.swing.table.DefaultTableModel;
 
-import test.MemberDTO;
+import jframebd.*;
 
 import java.awt.event.*;
 
 public class MemberProc extends JFrame implements ActionListener {
 
 	JPanel p, idCkP; // idCkP 패널
-	JTextField tfName, tfId, tfSnid, tfNum;
+	JTextField tfName, tfId, tfNo;
 	JPasswordField pfPwd; // 비밀번호
-	JPasswordField pfSnid; // 주민번호
+//	JPasswordField pfSnid; // 주민번호
 	JButton btnInsert, btnCancel, btnUpdate, btnDelete, idCkBtn , idCkBtn2; // 가입, 취소, 수정 , 탈퇴 , id체크 버튼
 
 	GridBagLayout gb;
@@ -47,7 +47,7 @@ public class MemberProc extends JFrame implements ActionListener {
 
 	}// 생성자
 
-	public MemberProc(int num, Member_List mList) { // 수정/삭제용 생성자
+	public MemberProc(long no, Member_List mList) { // 수정/삭제용 생성자
 		createUI();
 		btnInsert.setEnabled(false);
 		btnInsert.setVisible(false);
@@ -59,7 +59,7 @@ public class MemberProc extends JFrame implements ActionListener {
 //       System.out.println("id="+id);
 
 		MemberDAO dao = new MemberDAO();
-		MemberDTO vMem = dao.getMemberDTO(num);
+		MemberDTO vMem = dao.getMemberDTO(no);
 		viewData(vMem);
 
 	}// id를 가지고 생성
@@ -70,8 +70,7 @@ public class MemberProc extends JFrame implements ActionListener {
 //		String num = vMem.getNum();
 		String name = vMem.getName();
 		String id = vMem.getId();
-		String pwd = vMem.getPwd();
-		String snid = vMem.getSnid();
+		String pw = vMem.getPw();
 
 		// 화면에 세팅
 //		tfNum.setText(num);
@@ -79,7 +78,6 @@ public class MemberProc extends JFrame implements ActionListener {
 		tfId.setText(id);
 		tfId.setEditable(false); // 편집 안되게
 		pfPwd.setText(""); // 비밀번호는 안보여준다.
-		pfSnid.setText(""); // 주민번호는 안보여준다.
 
 	}// viewData
 
@@ -111,35 +109,35 @@ public class MemberProc extends JFrame implements ActionListener {
 		gbAdd(tfId, 1,0, 1, 1);
 
 		// 비밀번호
-		JLabel bPwd = new JLabel("비밀번호 : ");
+		JLabel bPw = new JLabel("비밀번호 : ");
 		pfPwd = new JPasswordField(20);
 		pfPwd.setEchoChar('*');
 		// 비밀번호 표시 부분
-		gbAdd(bPwd, 0, 3, 1, 1);
+		gbAdd(bPw, 0, 3, 1, 1);
 		gbAdd(pfPwd, 1, 3, 3, 1);
 
 		// 주민번호
-		JLabel bSnid = new JLabel("주민번호 : ");
-		JPanel pSnid = new JPanel(new FlowLayout(FlowLayout.LEFT));
-//		JPanel pSnid = new JPanel(new FlowLayout());
-		tfSnid = new JTextField(6); 
-		pfSnid = new JPasswordField(7);
-		pfSnid.setEchoChar('*');
-		pSnid.add(tfSnid);
-		pSnid.add(new JLabel(" - "));
-		pSnid.add(pfSnid);
-		tfSnid.setPreferredSize(new Dimension(200,30));
-		pfSnid.setPreferredSize(new Dimension(200,30));
-		// 비밀번호 표시 부분
-		gbAdd(bSnid, 0, 4, 1, 1);
-	    gbAdd(pSnid, 1, 4, 3, 1);
-//		gbAdd(tfSnid, 1, 4, 3, 1);
-//		gbAdd(pfSnid, 2, 4, 3, 1);
+//		JLabel bSnid = new JLabel("주민번호 : ");
+//		JPanel pSnid = new JPanel(new FlowLayout(FlowLayout.LEFT));
+////		JPanel pSnid = new JPanel(new FlowLayout());
+//		tfSnid = new JTextField(6); 
+//		pfSnid = new JPasswordField(7);
+//		pfSnid.setEchoChar('*');
+//		pSnid.add(tfSnid);
+//		pSnid.add(new JLabel(" - "));
+//		pSnid.add(pfSnid);
+//		tfSnid.setPreferredSize(new Dimension(200,30));
+//		pfSnid.setPreferredSize(new Dimension(200,30));
+//		// 비밀번호 표시 부분
+//		gbAdd(bSnid, 0, 4, 1, 1);
+//	    gbAdd(pSnid, 1, 4, 3, 1);
+////		gbAdd(tfSnid, 1, 4, 3, 1);
+////		gbAdd(pfSnid, 2, 4, 3, 1);
 
 		// 버튼
 		JPanel pButton = new JPanel();
 		JPanel pButton2 = new JPanel();
-		JPanel pButton3 = new JPanel();
+//		JPanel pButton3 = new JPanel();
 //		pButton2.setPreferredSize(new Dimension(150, 30)); // 패널 사이즈 조절
 		btnInsert = new JButton("가입");
 		btnUpdate = new JButton("수정");
@@ -302,16 +300,16 @@ public class MemberProc extends JFrame implements ActionListener {
 		String name = tfName.getText();
 		String id = tfId.getText();
 		String pwd = pfPwd.getText();
-		String snid1 = tfSnid.getText();
-		String snid2 = pfSnid.getText();
-		String snid = snid1+"-"+snid2;
+//		String snid1 = tfSnid.getText();
+//		String snid2 = pfSnid.getText();
+//		String snid = snid1+"-"+snid2;
 
 		// dto에 담는다.
 //		dto.setNum(num);
 		dto.setName(name);
 		dto.setId(id);
-		dto.setPwd(pwd);
-		dto.setSnid(snid);
+//		dto.setPwd(pwd);
+//		dto.setSnid(snid);
 
 		return dto;
 	}

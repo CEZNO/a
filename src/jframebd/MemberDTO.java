@@ -1,11 +1,9 @@
 package jframebd;
 
 import java.util.Date;
-import java.util.List;
-import java.util.ArrayList; //public class ArrayList<E> extends AbstractList<E>
 
 public class MemberDTO {
-	private String no;
+	private long no;
 	private String id;
 	private String pw;
 	private String name;
@@ -53,11 +51,11 @@ public class MemberDTO {
 //		this.signup_date = signup_date;
 //	}
 
-	public String getNo() {
+	public long getNo() {
 		return no;
 	}
 	
-	public void setNo(String no) {
+	public void setNo(long no) {
 		this.no = no;
 	}
 
@@ -112,8 +110,8 @@ public class MemberDTO {
 
 	@Override
 	public String toString() {
-		return "MemberDTO [id=" + id + ", pw=" + pw + ", name=" + name + ", adress=" + adress + ", signup_ip="
-				+ signup_ip + ", signup_date=" + signup_date + "]";
+		return "MemberDTO [no=" + no + ", id=" + id + ", pw=" + pw + ", name=" + name + ", address=" + address
+				+ ", signup_ip=" + signup_ip + ", signup_date=" + signup_date + "]";
 	}
 
 }

@@ -5,7 +5,6 @@ import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
 
-import Member.mgmt.Member_List;
 
 public class MemberDAO {
 
@@ -52,7 +51,7 @@ public class MemberDAO {
 	}
 
 	/** 한사람의 회원 정보를 얻는 메소드 */
-	public MemberDTO getMemberDTO(int num) {
+	public MemberDTO getMemberDTO(long no) {
 
 		MemberDTO dto = new MemberDTO();
 
@@ -65,12 +64,12 @@ public class MemberDAO {
 			con = getConn();
 			String sql = "select * from mem where no=?";
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, num);
+			ps.setLong(1, no);
 
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
-				dto.setNo(rs.getString("no"));
+				dto.setNo(rs.getLong("no"));
 				dto.setId(rs.getString("id"));
 				dto.setPw(rs.getString("pw"));
 				dto.setName(rs.getString("name"));
@@ -100,7 +99,7 @@ public class MemberDAO {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				String no = rs.getString("no");
+				Long no = rs.getLong("no");
 				String name = rs.getString("name");
 				String id = rs.getString("id");
 				String pw = rs.getString("pw");
@@ -139,7 +138,7 @@ public class MemberDAO {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				String no = rs.getString("no");
+				Long no = rs.getLong("no");
 				String name = rs.getString("name");
 				String id = rs.getString("id");
 				String pw = rs.getString("pw");
@@ -275,7 +274,7 @@ public class MemberDAO {
 	/**
 	 * 회원정보 삭제 : tip: 실무에서는 회원정보를 Delete 하지 않고 탈퇴여부만 체크한다.
 	 */
-	public boolean deleteMember(String id, String pwd) {
+	public boolean deleteMember(String id, String pw) {
 
 		boolean ok = false;
 		Connection con = null;
@@ -283,11 +282,11 @@ public class MemberDAO {
 
 		try {
 			con = getConn();
-			String sql = "delete from mem where id=? and pwd=?";
+			String sql = "delete from mem where id=? and pw=?";
 
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
-			ps.setString(2, pwd);
+			ps.setString(2, pw);
 			int r = ps.executeUpdate(); // 실행 -> 삭제
 
 			if (r > 0)
@@ -397,7 +396,7 @@ public class MemberDAO {
 
 		try {
 			con = getConn();
-			String sql = "select * from mem order by num asc";
+			String sql = "select * from mem order by no asc";
 			ps = con.prepareStatement(sql);
 			// st = con.createStatement();
 			rs = ps.executeQuery(sql);

@@ -82,7 +82,6 @@ public class Member_List extends JFrame implements MouseListener, ActionListener
 		col.add("이름");
 		col.add("아이디");
 		col.add("비밀번호");
-		col.add("주민번호");
 
 		return col;
 	}// getColumn

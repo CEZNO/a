@@ -4,6 +4,7 @@ package test;
 import java.util.Date;
 
 public class CommDTO {
+	private long no;
 	private long cmt_no;
 	private int cmt_chckopen;
 	private int cmt_blame;
@@ -16,6 +17,14 @@ public class CommDTO {
 
 	}
 	
+	public long getNo() {
+		return no;
+	}
+
+	public void setNo(long no) {
+		this.no = no;
+	}
+
 	public long getCmt_no() {
 		return cmt_no;
 	}
@@ -74,8 +83,9 @@ public class CommDTO {
 
 	@Override
 	public String toString() {
-		return "CommDTO [cmt_no=" + cmt_no + ", cmt_chckopen=" + cmt_chckopen + ", cmt_blame=" + cmt_blame
-				+ ", cmt_date=" + cmt_date + ", cmt_txt=" + cmt_txt + ", pst_no=" + pst_no + ", id=" + id + "]";
+		return "CommDTO [no=" + no + ", cmt_no=" + cmt_no + ", cmt_chckopen=" + cmt_chckopen + ", cmt_blame="
+				+ cmt_blame + ", cmt_date=" + cmt_date + ", cmt_txt=" + cmt_txt + ", pst_no=" + pst_no + ", id=" + id
+				+ "]";
 	}
 
 }

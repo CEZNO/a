@@ -4,6 +4,7 @@ package test;
 import java.util.Date;
 
 public class PostDTO {
+	private long no;
 	private long pst_no;
 	private String pst_title;
 	private String pst_text;
@@ -13,6 +14,14 @@ public class PostDTO {
 
 	public PostDTO() {
 
+	}
+
+	public long getNo() {
+		return no;
+	}
+
+	public void setNo(long no) {
+		this.no = no;
 	}
 
 	public long getPst_no() {
@@ -65,8 +74,8 @@ public class PostDTO {
 
 	@Override
 	public String toString() {
-		return "PostDTO [pst_no=" + pst_no + ", pst_title=" + pst_title + ", pst_text=" + pst_text + ", pst_date="
-				+ pst_date + ", id=" + id + ", hit=" + hit + "]";
+		return "PostDTO [no=" + no + ", pst_no=" + pst_no + ", pst_title=" + pst_title + ", pst_text=" + pst_text
+				+ ", pst_date=" + pst_date + ", id=" + id + ", hit=" + hit + "]";
 	}
 
 
